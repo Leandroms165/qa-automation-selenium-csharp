@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Visual Studio cache
 .vs/
 *.user
@@ -15,3 +16,4 @@ TestResults/
 
 # Configuração local
 appsettings.Development.json
+=======
