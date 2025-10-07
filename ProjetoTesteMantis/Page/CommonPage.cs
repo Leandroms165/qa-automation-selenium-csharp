@@ -10,12 +10,13 @@ namespace ProjetoTesteMantis.Page
 {
     public class CommonPage: PageBase
     {
-        //
         public void ClicaOpcaoDoMenu(string opcao)
         {
             Thread.Sleep(3000);
-            IWebElement menu = webDriver.FindElement(By.XPath($"//*[@id=\"sidebar\"]/ul//a/span[contains(text(),'{opcao}')]"));
+            IWebElement menu = WebDriver.FindElement(By.XPath($"//*[@id=\"sidebar\"]/ul//a/span[contains(text(),'{opcao}')]"));
             menu.Click();
         }
+
+
     }
 }

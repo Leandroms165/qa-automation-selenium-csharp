@@ -12,15 +12,15 @@ namespace ProjetoTesteMantis.Bases
 {
     public partial class PageBase
     {
-        protected IWebDriver webDriver { get; set; }
+        protected IWebDriver WebDriver { get; set; }
         protected WebDriverWait wait { get; set; }
         protected IJavaScriptExecutor javaScript { get; set; }
 
         public PageBase()
         {
             //wait = new WebDriverWait(DriverFactory.Webdriver, TimeSpan.FromSeconds(Convert.ToDouble(BuilderJson.ParamentsAppSettings("DEFAULT_TIMEOUT_IN_SECONDS"))));
-            webDriver = DriverFactory.Webdriver;
-            javaScript = (IJavaScriptExecutor)webDriver;
+            WebDriver = DriverFactory.Webdriver;
+            javaScript = (IJavaScriptExecutor)WebDriver;
         }
        
     }

@@ -18,10 +18,10 @@ namespace ProjetoTesteMantis.Page
 
         public void Login(string username, string password)
         {
-            webDriver.SendKeys(usuario, username);
-            webDriver.ClickBy(entrar);
-            webDriver.SendKeys(senha, password);
-            webDriver.ClickBy(entrar);
+            WebDriver.SendKeys(usuario, username);
+            WebDriver.ClickBy(entrar);
+            WebDriver.SendKeys(senha, password);
+            WebDriver.ClickBy(entrar);
         }
     }
 }

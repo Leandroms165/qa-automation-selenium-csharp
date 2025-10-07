@@ -14,7 +14,10 @@ namespace ProjetoTesteMantis.Page
     {
 
         private readonly CommonPage _commonPage;
-
+        public void CriarTarefa()
+        {
+            _commonPage.ClicaOpcaoDoMenu("Criar Tarefa");
+        }
         private By frequencia => By.Name("reproducibility");
         private By gravidade => By.Id("severity");
         private By prioridade => By.Id("priority");
@@ -30,33 +33,30 @@ namespace ProjetoTesteMantis.Page
             _commonPage = new CommonPage();
         }
 
-        public void CriarTarefa()
-        {
-            _commonPage.ClicaOpcaoDoMenu("Criar Tarefa");
-        }
+        
         public void PreencherFormularioTarefa()
         {
-            webDriver.SelectDropDownListByText(frequencia, "sempre");
-            webDriver.SelectDropDownListByText(gravidade, "pequeno");
-            webDriver.SelectDropDownListByText(prioridade, "normal");
-            webDriver.SendKeys(resumo, "Teste Automatizado");
-            webDriver.SendKeys(descricao, "Garantia de qualidade de Software");
-            webDriver.SendKeys(passosParaReproduzir, "Teste > Automatizado > Mantis");
-            webDriver.SendKeys(informacoes, "Aprendizado");
+            WebDriver.SelectDropDownListByText(frequencia, "sempre");
+            WebDriver.SelectDropDownListByText(gravidade, "pequeno");
+            WebDriver.SelectDropDownListByText(prioridade, "normal");
+            WebDriver.SendKeys(resumo, "Teste Automatizado");
+            WebDriver.SendKeys(descricao, "Garantia de qualidade de Software");
+            WebDriver.SendKeys(passosParaReproduzir, "Teste > Automatizado > Mantis");
+            WebDriver.SendKeys(informacoes, "Aprendizado");
             AnexarDocumento();
-            webDriver.ClickBy(buttonCriarTarefa);
+            WebDriver.ClickBy(buttonCriarTarefa);
         }
         public void AnexarDocumento()
         {
             string caminhoDoArquivo = @"C:\ProjetoTesteMantis\ProjetoTesteMantis\Documents\Screenshot_1.png";
-            IWebElement fileInput = webDriver.FindElement(By.CssSelector("input.dz-hidden-input"));
+            IWebElement fileInput = WebDriver.FindElement(By.CssSelector("input.dz-hidden-input"));
             fileInput.SendKeys(caminhoDoArquivo);
         }
         public bool MsgSucesso(string mensagemEsperada)
         {
             try
             {
-                var mensagem = webDriver.FindElement(By.CssSelector("div.alert.alert-success.center p"));
+                var mensagem = WebDriver.FindElement(By.CssSelector("div.alert.alert-success.center p"));
                 return mensagem.Text.Trim() == mensagemEsperada;
             }
             catch
@@ -67,7 +67,7 @@ namespace ProjetoTesteMantis.Page
         public void ValidarTarefa()
         {
             Thread.Sleep(7000);
-            IWebElement tabela = webDriver.FindElement(By.XPath("(//*[@class='table table-bordered table-condensed'])[1]"));
+            IWebElement tabela = WebDriver.FindElement(By.XPath("(//*[@class='table table-bordered table-condensed'])[1]"));
             var linhasTabela = tabela.FindElements(By.TagName("tr"));
             
             bool encontrou = false;
