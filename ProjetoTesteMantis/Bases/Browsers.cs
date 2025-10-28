@@ -37,13 +37,11 @@ namespace ProjetoTesteMantis
         public static EdgeOptions OptionsEdge(bool headless) 
         {
             edgeOptions  = new EdgeOptions();
-            edgeOptions.AddArgument("--start-maximized");
-            edgeOptions.AddArgument("enable-automation");
+            edgeOptions.AddArgument("--headless=new");
             edgeOptions.AddArgument("--no-sandbox");
-            edgeOptions.AddArgument("--disable-infobars");
             edgeOptions.AddArgument("--disable-dev-shm-usage");
-            edgeOptions.AddArgument("--disable-browser-side-navigation");
             edgeOptions.AddArgument("--disable-gpu");
+
 
             if (headless) 
             {
