@@ -26,6 +26,7 @@ namespace ProjetoTesteMantis.Teste
         public void EditarTarefa()
         {
             var page = new EditarTarefaPage();
+            
             page.VerTarefa();
             page.AtualizarTarefa();
             page.EditarTarefas();

@@ -66,22 +66,42 @@ namespace ProjetoTesteMantis.Page
         }
         public void ValidarTarefa()
         {
+            // Aguarda 7 segundos para garantir que a página e a tabela carreguem completamente
             Thread.Sleep(7000);
-            IWebElement tabela = WebDriver.FindElement(By.XPath("(//*[@class='table table-bordered table-condensed'])[1]"));
+
+            // Localiza a primeira tabela da página que possui as classes:
+            // 'table table-bordered table-condensed'
+            IWebElement tabela = WebDriver.FindElement(
+                By.XPath("(//*[@class='table table-bordered table-condensed'])[1]")
+            );
+
+            // Busca todas as linhas (tr) dentro da tabela encontrada
             var linhasTabela = tabela.FindElements(By.TagName("tr"));
-            
+
+            // Variável de controle para saber se o texto foi encontrado ou não
             bool encontrou = false;
 
+            // Percorre todas as linhas da tabela
             foreach (var linha in linhasTabela)
             {
+                // Verifica se o texto da linha contém a frase desejada
                 if (linha.Text.Contains("Garantia de qualidade de Software"))
                 {
+                    // Se encontrou o texto, marca como true
                     encontrou = true;
+
+                    // Interrompe o loop, pois não precisa continuar verificando
                     break;
                 }
             }
-            Assert.That(encontrou, "Nenhuma linha da tabela contém o texto 'Garantia de qualidade de Software'.");
 
+            // Valida o resultado:
+            // Se 'encontrou' for false, o teste falha e exibe a mensagem informada
+            Assert.That(
+                encontrou,
+                "Nenhuma linha da tabela contém o texto 'Garantia de qualidade de Software'."
+            );
         }
+
     }
 }
