@@ -67,5 +67,11 @@ namespace ProjetoTesteMantis.Bases
                 return false;
             }
         }
+
+        public static IJavaScriptExecutor javaScriptExecutor(this IWebDriver driver)
+        {
+            return (IJavaScriptExecutor)driver;
+        }
+
     }
 }

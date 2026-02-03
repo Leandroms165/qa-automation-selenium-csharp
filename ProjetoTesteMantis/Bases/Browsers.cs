@@ -16,7 +16,8 @@ namespace ProjetoTesteMantis
 
         public static ChromeOptions OptionsChrome(bool headless)
         {
-            chromeOptions = new ChromeOptions();
+            ChromeOptions chromeOptions = new ChromeOptions();
+
             chromeOptions.AddArgument("--start-maximized");
             chromeOptions.AddArgument("enable-automation");
             chromeOptions.AddArgument("--no-sandbox");
@@ -30,10 +31,40 @@ namespace ProjetoTesteMantis
             {
                 chromeOptions.AddArgument("--headless");
             }
-            return chromeOptions; // Retorna o objeto configurado
 
+            // ===== CONFIGURAÇÃO DE DOWNLOAD =====
+            string pasta = @"C:\ProjetoTesteMantis\ProjetoTesteMantis\bin\Debug\net8.0\Download";
+
+            string pastaDownload = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+               pasta
+            );
+
+            Directory.CreateDirectory(pastaDownload);
+
+            chromeOptions.AddUserProfilePreference(
+                "download.default_directory",
+                pastaDownload
+            );
+
+            chromeOptions.AddUserProfilePreference(
+                "download.prompt_for_download",
+                false
+            );
+
+            chromeOptions.AddUserProfilePreference(
+                "download.directory_upgrade",
+                true
+            );
+
+            chromeOptions.AddUserProfilePreference(
+                "safebrowsing.enabled",
+                true
+            );
+
+            // Retorna o objeto configurado
+            return chromeOptions;
         }
-
         public static EdgeOptions OptionsEdge(bool headless) 
         {
             edgeOptions  = new EdgeOptions();

@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.BiDi.Network;
 using ProjetoTesteMantis.Bases;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,9 @@ using System.Threading.Tasks;
 namespace ProjetoTesteMantis.Page
 {
     public class CommonPage: PageBase
-    {
+    { 
+        private By acao => By.Name("action");
+
         public void ClicaOpcaoDoMenu(string opcao)
         {
             Thread.Sleep(3000);
@@ -17,6 +20,10 @@ namespace ProjetoTesteMantis.Page
             menu.Click();
         }
 
+        public void SelecionarAcao(string nomeAcao)
+        { 
+            WebDriver.SelectDropDownListByText(acao, nomeAcao);
+        }
 
     }
 }
