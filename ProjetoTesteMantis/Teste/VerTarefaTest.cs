@@ -1,11 +1,6 @@
 ﻿using NUnit.Framework;
 using ProjetoTesteMantis.Bases;
 using ProjetoTesteMantis.Page;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjetoTesteMantis.Teste
 {
@@ -65,9 +60,22 @@ namespace ProjetoTesteMantis.Teste
             commonPage.ClicaOpcaoDoMenu("Ver Tarefas");
             page.SelecionarTudo();
             commonPage.SelecionarAcao("Copiar");
+            page.ClickOK();
+            page.ValidarCriarTarefa("Copiar tarefas para");
+            page.ClicarCopiarTarefas();
+            page.ValidarDataCriacao();
         }
 
         [Test, Order(6)]
+        public void AtribuirTarefa() 
+        {
+            var commonPage = new CommonPage();
+            var page = new AcaoPage();
+            commonPage.ClicaOpcaoDoMenu("Ver Tarefas");
+            page.SelecionarTarefaPorResumo("Teste Automatizado");
+        }
+
+        [Test]
         public void ExcluirTarefa()
         {
             var page = new EditarTarefaPage();

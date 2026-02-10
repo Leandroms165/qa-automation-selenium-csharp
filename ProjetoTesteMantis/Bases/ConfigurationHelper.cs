@@ -19,10 +19,6 @@ namespace ProjetoTesteMantis.Bases
                     .Build();
             }
 
-            public static string Get(string key)
-            {
-                return _config[key];
-            }
         }
     
 }

@@ -18,7 +18,6 @@ namespace ProjetoTesteMantis.Bases
 
         public PageBase()
         {
-            //wait = new WebDriverWait(DriverFactory.Webdriver, TimeSpan.FromSeconds(Convert.ToDouble(BuilderJson.ParamentsAppSettings("DEFAULT_TIMEOUT_IN_SECONDS"))));
             WebDriver = DriverFactory.Webdriver;
             javaScript = (IJavaScriptExecutor)WebDriver;
         }
