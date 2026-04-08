@@ -73,6 +73,16 @@ namespace ProjetoTesteMantis.Teste
             var page = new AcaoPage();
             commonPage.ClicaOpcaoDoMenu("Ver Tarefas");
             page.SelecionarTarefaPorResumo("Teste Automatizado");
+            commonPage.SelecionarAcao("Atribuir");
+        }
+
+        [Test]
+        public void ResoalverTarefa()
+        {
+            var commonPage = new CommonPage();
+            var page = new ResolverPage();
+            commonPage.ClicaOpcaoDoMenu("Ver Tarefas");
+            page.ResolverTarefa("Teste Atualizado");
         }
 
         [Test]
