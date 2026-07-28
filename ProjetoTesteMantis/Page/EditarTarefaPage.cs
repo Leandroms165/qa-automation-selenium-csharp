@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using K4os.Compression.LZ4.Internal;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using ProjetoTesteMantis.Bases;
 using System;
@@ -101,6 +102,24 @@ namespace ProjetoTesteMantis.Page
             catch (NoSuchElementException)
             {
                 return false;
+            }
+        }
+
+        public void ExcluirTarefasDiversas()
+        {
+
+            IList<IWebElement> listaTarefas = WebDriver.FindElements(By.XPath("//*[@id=\"buglist\"]//tr"));
+
+            while (listaTarefas.Count > 1)
+            {
+                IWebElement linha = WebDriver.FindElement(By.XPath("(//label[input[@name='bug_arr[]']])[1]"));
+                linha.Click();
+                SelecionarAcao();
+                ValidarMensagemExibida("Você tem certeza que deseja apagar estas tarefas ?");
+                ClicarApagarTarefas();
+                IList<IWebElement> tarefas = WebDriver.FindElements(By.XPath("//*[@id=\"buglist\"]//tr"));
+
+                listaTarefas = tarefas;
             }
         }
     }

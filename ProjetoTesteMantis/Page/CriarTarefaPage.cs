@@ -5,6 +5,7 @@ using ProjetoTesteMantis.Bases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,7 +34,6 @@ namespace ProjetoTesteMantis.Page
             _commonPage = new CommonPage();
         }
 
-        
         public void PreencherFormularioTarefa()
         {
             WebDriver.SelectDropDownListByText(frequencia, "sempre");
@@ -103,5 +103,22 @@ namespace ProjetoTesteMantis.Page
             );
         }
 
+        public void CriarDiversasTarefasDeTeste()
+        {
+            int totalDeTarefasParaCadastro = 0;
+
+            while (totalDeTarefasParaCadastro < 5)
+            {
+                CriarTarefa();
+                PreencherFormularioTarefa();
+                MsgSucesso("Operação realizada com sucesso.");
+                ValidarTarefa();
+                totalDeTarefasParaCadastro++;
+            }
+        }
+
+        
+
+        
     }
 }

@@ -82,7 +82,7 @@ namespace ProjetoTesteMantis.Teste
             var commonPage = new CommonPage();
             var page = new ResolverPage();
             commonPage.ClicaOpcaoDoMenu("Ver Tarefas");
-            page.ResolverTarefa("Teste Atualizado");
+             page.ResolverTarefa("Teste Atualizado");
         }
 
         [Test]
@@ -95,6 +95,25 @@ namespace ProjetoTesteMantis.Teste
             page.ValidarMensagemExibida("Você tem certeza que deseja apagar estas tarefas?");
             page.ClicarApagarTarefas();
             page.ValidaTarefaExcluída("Teste Atualizado");
+        }
+
+        [Test]
+        public void CriarVariasTarefas()
+        {
+            var page = new CriarTarefaPage();
+            page.CriarDiversasTarefasDeTeste();
+            page.MsgSucesso("Operação realizada com sucesso.");
+            page.ValidarTarefa();
+        }
+        [Test]
+        public void ExcluirVariasTarefas()
+        {
+            var page = new EditarTarefaPage();
+            var commonPage = new CommonPage();
+            commonPage.ClicaOpcaoDoMenu("Ver Tarefas");
+            page.ExcluirTarefasDiversas();
+
+
         }
     }
 }
